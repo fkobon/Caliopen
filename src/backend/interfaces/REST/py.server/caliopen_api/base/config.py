@@ -7,6 +7,7 @@ from caliopen_storage.helpers.connection import connect_storage
 
 from .renderer import TextPlainRenderer, JsonRenderer, PartRenderer
 from .deserializer import json_deserializer
+from .exception import ValidationError
 
 log = logging.getLogger(__name__)
 
@@ -20,11 +21,7 @@ https://github.com/striglia/pyramid_swagger/issues/177#issuecomment-373220674
 
 def swagger_error_view(exc, request):
     """Format swagger validation error."""
-    for_json = {
-        'message': exc.child.message,
-    }
-
-    return for_json
+    raise ValidationError(exc.child.message)
 
 
 def includeme(config):
