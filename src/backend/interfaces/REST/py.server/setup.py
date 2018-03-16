@@ -16,7 +16,7 @@ with open(os.path.join(*([here] + name.split('.') + ['__init__.py']))) as v_file
     version = re.compile(r".*__version__ = '(.*?)'", re.S).match(v_file.read()).group(1)
 
 requires = [
-    'pyramid >=1.5, <=1.5.99',
+    'pyramid',
     'pyramid_jinja2',
     'caliopen_storage',
     'caliopen_main',
